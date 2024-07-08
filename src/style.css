@@ -21,18 +21,63 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #cbd6f7;
 }
-
-
-
-
-
 
 #app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(241, 244, 255);  
+  border-radius: 25px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+
+.new-task {
+  outline: none; 
+  border: none;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border-radius: 10px;
+  width: 200px;
+  height: 35px;
+  padding: 7px;
+}
+.add-button, button {
+  background-color: white;
+  border: 1px solid #0e1e54;
+  color: #0e1e54;;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  font-size: 16px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  width: 60px;
+  padding: 7px;
+}
+.todo-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.list {
+  list-style: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.list-item {
+  display: flex;
+  gap: 15px;
+}
+.task-text {
+  background-color: white;
+  width: 200px;
+  height: 35px;
+  /* box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px; */
+  border-radius: 10px;
+  padding: 7px;
 }
 
 
