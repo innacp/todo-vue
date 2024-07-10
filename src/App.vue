@@ -14,7 +14,7 @@
   <section class="list-container">
     <h2>your tasks</h2>
     <ul class="list">
-      <li class="list-item" v-for="(task, index) in tasks" :key="index" @click="markComplete">
+      <li class="list-item" v-for="(task, index) in tasks" :key="index" @click="markComplete">  
         <span class="task-text">
           {{ task }}
         </span>
