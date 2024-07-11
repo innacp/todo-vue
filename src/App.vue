@@ -5,7 +5,7 @@
     <h2>add task</h2>
     <form class="todo-form" @submit.prevent="addTask">
       <label>
-        <input class="new-task" type="text" name="newTask" v-model="newTask">
+        <input class="new-task" type="text" name="newTask" v-model="newTask" @change="toggleTaskCompletion">
       </label>
       <button class="add-button" type="submit">add</button>
     </form>
@@ -14,11 +14,11 @@
   <section class="list-container">
     <h2>your tasks</h2>
     <ul class="list">
-      <li class="list-item" v-for="(task, index) in tasks" :key="index" @click="markComplete">  
-        <span class="task-text">
-          {{ task }}
+      <li class="list-item" v-for="task in tasks" :key="task.id">  
+        <span class="task-text" :class="{ 'completed': task.completed }" @click="toggleTaskCompletion(task)">
+          {{ task.text }}
         </span>
-        <button @click="deleteTask">delete</button>
+        <button @click="removeTask">delete</button>
       </li>
     </ul>
   </section>
@@ -28,24 +28,30 @@
 <script setup>
 import { ref } from 'vue';
 
-const newTask = ref("");
 const tasks = ref([]);
+const newTask = ref("");
 
 const addTask = () => {
-  tasks.value.push(newTask.value)
+  if(newTask.value.trim()) {
+    tasks.value.push({
+      id: `${Date.now()}-${Math.random()}`,
+      text: newTask.value.trim(),
+      completed: false
+    });
+  }
   newTask.value = "";
 }
 
-const deleteTask = (index) => {
-  tasks.value.splice(index, 1)
+const toggleTaskCompletion = (task) => {
+  task.completed = !task.completed;
 }
 
-const markComplete = () => {
-  newTask.value
-}
-
-  
+const removeTask = (id) => {
+  tasks.value.splice(id, 1)
+}  
 </script>
+
+
 
 <style scoped>
 </style>
