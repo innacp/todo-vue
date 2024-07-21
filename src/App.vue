@@ -1,30 +1,3 @@
-
-
-<template>
-  <section class="add-task-container">
-    <h2>add task</h2>
-    <form class="todo-form" @submit.prevent="addTask">
-      <label>
-        <input class="new-task" type="text" name="newTask" v-model="newTask" @change="toggleTaskCompletion">
-      </label>
-      <button class="add-button" type="submit">add</button>
-    </form>
-  </section>
-
-  <section class="list-container">
-    <h2>your tasks</h2>
-    <ul class="list">
-      <li class="list-item" v-for="task in tasks" :key="task.id">  
-        <span class="task-text" :class="{ 'completed': task.completed }" @click="toggleTaskCompletion(task)">
-          {{ task.text }}
-        </span>
-        <button @click="removeTask">delete</button>
-      </li>
-    </ul>
-  </section>
-
-</template>
-
 <script setup>
 import { ref } from 'vue';
 
@@ -47,9 +20,37 @@ const toggleTaskCompletion = (task) => {
 }
 
 const removeTask = (id) => {
-  tasks.value.splice(id, 1)
+  tasks.value = tasks.value.filter((task) => task.id !== id);
 }  
 </script>
+
+
+
+<template>
+  <section class="add-task-container">
+    <h2>add task</h2>
+    <form class="todo-form" @submit.prevent="addTask">
+      <label>
+        <input class="new-task" type="text" name="newTask" v-model="newTask" @change="toggleTaskCompletion">
+      </label>
+      <button class="add-button" type="submit">add</button>
+    </form>
+  </section>
+
+  <section class="list-container">
+    <h2>your tasks</h2>
+    <ul class="list">
+      <li class="list-item" v-for="task in tasks" :key="task.id">  
+        <span class="task-text" :class="{ 'completed': task.completed }" @click="toggleTaskCompletion(task)">
+          {{ task.text }}
+        </span>
+        <button @click="removeTask(task.id)">delete</button>
+      </li>
+    </ul>
+  </section>
+
+</template>
+
 
 
 
