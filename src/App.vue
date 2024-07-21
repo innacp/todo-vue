@@ -6,13 +6,15 @@ const newTask = ref("");
 
 const addTask = () => {
   if(newTask.value.trim()) {
-    tasks.value.push({
+    tasks.value = [
+    ...tasks.value,  
+    {
       id: `${Date.now()}-${Math.random()}`,
-      text: newTask.value.trim(),
+      text: newTask.value,
       completed: false
-    });
-  }
+    }];
   newTask.value = "";
+}
 }
 
 const toggleTaskCompletion = (task) => {
